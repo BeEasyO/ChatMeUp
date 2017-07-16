@@ -49,6 +49,7 @@ exports.validateRegister = (req, res, next) =>{
  		name: req.body.name,
  	});
  	const register = promisify(User.register, User);
+
  	try{
  		await register(user, req.body.password);
  	}catch(e){
@@ -65,17 +66,37 @@ exports.validateRegister = (req, res, next) =>{
  	})
  }
 
- exports.updateAccount = async (req, res) =>{
- 	const updates = {
- 		name:req.body.name,
- 		email:req.body.email
- 	};
+ exports.updateAccount = async (req, res, next) =>{
 
+ 	const updates = {};
+	if(req.body.name){
+		updates.name = req.body.name;
+	}
+	if(req.body.email){
+		updates.email = req.body.email;
+		req.checkBody('email', 'That email is not valid').isEmail();
+	}
+
+ 	
+ 	const errors = req.validationErrors();
+ 	if(errors){
+		req.flash('error', errors.map(err=>err.msg));
+		res.render('account', {
+		welcomeMessage: 'account',
+		body: req.body,
+		flashes: req.flash()
+		});
+		return;
+	}
  	const user = await User.findOneAndUpdate(
  		{_id : req.user._id },
  		{$set: updates},
  		{new:true, runValidators:true, context: 'query'}
  	);
+ 	if(!user){
+ 		req.flash('error', 'Something went wrong');
+ 		return res.redirect('/account')
+ 	}
  	req.flash("success", "Updated the profile!");
- 	res.redirect('/account');
+ 	res.redirect('/account')
  }

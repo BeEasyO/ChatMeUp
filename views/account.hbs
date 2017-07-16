@@ -1,11 +1,44 @@
 {{> header}}
-	<h2>{{welcomeMessage}}</h2>
-	<form action="/account" method="POST">
-		<h2>Edit your account</h2>
-		<label for="name">Name</label>
-		<input type="text" name="name" value="{{user.name}}">
-		<label for="email">Email address</label>
-		<input type="email" name="email" value="{{user.email}}">
-		<input type="submit" value="Edit">
-	</form>
+	<div class="signup__container">
+  <div class="container__child signup__thumbnail">
+    <div class="thumbnail__logo">
+      <h1 class="logo__text">chatmeup</h1>
+    </div>
+    <div class="thumbnail__content text-center">
+      <h1 class="heading--primary">Welcome to ChatMeUp.</h1>
+      <h2 class="heading--secondary">Are you ready to spen your time here?</h2>
+    </div>
+    <div class="thumbnail__links">
+      <ul class="list-inline m-b-0 text-center">
+        <li><a href="https://www.behance.net/" target="_blank"><fa class="fa fa-behance"></fa></a></li>
+        <li><a href="https://github.com/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+    <div class="signup__overlay"></div>
+  </div>
+  <div class="container__child signup__form">
+    <form action="/account" method="POST">
+   	<h2>Edit your account</h2>
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input class="form-control" type="text" name="name" id="username" placeholder="{{user.name}}"/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" placeholder="{{user.email}}"/>
+      </div>
+      <div class="m-t-lg">
+        <ul class="list-inline">
+          <li>
+            <input class="btn btn--form" type="submit" value="Edit" />
+          </li>
+          <li>
+            <button value="logout" class="btn btn--form"><a href="/logout">Log out</a></button>
+          </li>
+        </ul>
+      </div>
+    </form>  
+  </div>
+</div>
 {{> footer}}

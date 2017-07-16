@@ -1,14 +1,51 @@
 {{> header}}
-	<h2>{{welcomeMessage}}</h2>
-	<form action="/register" method="POST">
-	<label for="name">Name</label>
-		<input type="text" name="name">
-		<label for="email">Email address</label>
-		<input type="email" name="email">
-		<label for="password">Password</label>
-		<input type="password" name="password">
-		<label for="password-confirm">Confirm Password</label>
-		<input type="password" name="password-confirm">
-		<input type="submit" value="Register">
-	</form>
+	 <div class="signup__container">
+  <div class="container__child signup__thumbnail">
+    <div class="thumbnail__logo">
+      <h1 class="logo__text">chatmeup</h1>
+    </div>
+    <div class="thumbnail__content text-center">
+      <h1 class="heading--primary">Welcome to ChatMeUp.</h1>
+      <h2 class="heading--secondary">Are you ready to spen your time here?</h2>
+    </div>
+    <div class="thumbnail__links">
+      <ul class="list-inline m-b-0 text-center">
+        <li><a href="https://www.behance.net/" target="_blank"><fa class="fa fa-behance"></fa></a></li>
+        <li><a href="https://github.com/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+    <div class="signup__overlay"></div>
+  </div>
+  <div class="container__child signup__form">
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input class="form-control" type="text" name="name" id="username" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" placeholder="example@mail.com" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password" placeholder="********" required />
+      </div>
+      <div class="form-group">
+        <label for="password-confirm">Repeat Password</label>
+        <input class="form-control" type="password" name="password-confirm" id="passwordRepeat" placeholder="********" required />
+      </div>
+      <div class="m-t-lg">
+        <ul class="list-inline">
+          <li>
+            <input class="btn btn--form" type="submit" value="Register" />
+          </li>
+          <li>
+            <a class="signup__link" href="/login">I am already a member</a>
+          </li>
+        </ul>
+      </div>
+    </form>  
+  </div>
+</div>
 {{> footer}}

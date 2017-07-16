@@ -14,7 +14,7 @@ router.post('/register',
 	authController.login
 	)
 
-router.get('/user', (req, res) => {
+router.get('/user', authController.isLoggedIn, (req, res) => {
 	res.render('user', {
 		welcomeMessage: 'user',
 		pageTitle: 'user page'
