@@ -1,0 +1,11 @@
+{{> header}}
+	<h2>{{welcomeMessage}}</h2>
+	<form action="/account" method="POST">
+		<h2>Edit your account</h2>
+		<label for="name">Name</label>
+		<input type="text" name="name" value="{{user.name}}">
+		<label for="email">Email address</label>
+		<input type="email" name="email" value="{{user.email}}">
+		<input type="submit" value="Edit">
+	</form>
+{{> footer}}

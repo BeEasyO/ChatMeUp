@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{pageTitle}}</title>
+</head>
+<body>
+{{#if flashes}}
+	{{#each flashes.error}}
+		<div class="red" style="color:red;">{{this}}</div>
+	{{/each}}
+	{{#each flashes.success}}
+		<div class="a" style="color:green;"">{{this}}</div>
+	{{/each}}
+{{/if}}
+
+  {{#if user}}
+  <img style="max-width:50px" src="{{user.gravatar}}" alt="">
+{{{json user}}}
+<button value="logout" style="float:right"><a href="/logout">Log out</a></button>
+<button value="account" style="float:right"><a href="/account">To personal acc</a></button>
+{{/if}}

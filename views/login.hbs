@@ -1,0 +1,16 @@
+{{> header}}
+	<h2>{{welcomeMessage}}</h2>
+	<form action="/login" method="POST">
+		<label for="email">Email address</label>
+		<input type="email" name="email">
+		<label for="password">Password</label>
+		<input type="password" name="password">
+		<input type="submit" value="Log in">
+	</form>
+	<form action="/account/forgot" method="POST">
+		<h2>I forgot my password</h2>
+		<label for="email">Email address</label>
+		<input type="email" name="email">
+		<input type="submit" value="Send a Reset">
+	</form>
+{{> footer}}
