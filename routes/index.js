@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const userController = require('../controllers/userController.js');
 const authController = require('../controllers/authController.js');
 const { catchErrors } = require('../handlers/erros');
@@ -20,6 +21,27 @@ router.get('/user', authController.isLoggedIn, (req, res) => {
 		pageTitle: 'user page'
 	});
 });
+
+router.get('/auth/facebook', passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages'] }));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login'}),
+	  function(req, res) {
+	    res.redirect('/account');
+	  }
+  );
+
+router.get('/auth/google', passport.authenticate('google',  {scope: ['email', 'profile'] }));
+
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login'}),
+	  function(req, res) {
+	    res.redirect('/account');
+	  }
+  );
+router.get('/connect/facebook', passport.authenticate('facebook',  {scope: ['user_friends', 'manage_pages'] }));
+router.get('/connect/google', passport.authenticate('google',  {scope: ['email', 'profile'] }));
+
 
 
 router.get('/logout', authController.logout);

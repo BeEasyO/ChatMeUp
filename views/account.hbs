@@ -4,15 +4,16 @@
     <div class="thumbnail__logo">
       <h1 class="logo__text">chatmeup</h1>
     </div>
+
     <div class="thumbnail__content text-center">
       <h1 class="heading--primary">Welcome to ChatMeUp.</h1>
       <h2 class="heading--secondary">Are you ready to spend your time here?</h2>
     </div>
     <div class="thumbnail__links">
       <ul class="list-inline m-b-0 text-center">
-        <li><a href="https://www.behance.net/" target="_blank"><fa class="fa fa-behance"></fa></a></li>
-        <li><a href="https://github.com/" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="connect/facebook"><fa class="fa fa-facebook"></fa></a></li>
+        <li><a href="connect/google"><i class="fa fa-google"></i></a></li>
+        <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
       </ul>
     </div>
     <div class="signup__overlay"></div>
@@ -39,6 +40,18 @@
         </ul>
       </div>
     </form>  
+    {{#if user.facebook}}
+    <div style="width:100%; padding:15px; color:#000;" class="facebook-container">
+      <span>Имя</span> - {{user.facebook.name}}
+      <span>почта</span> - {{user.facebook.email}}
+    </div>
+    {{/if}}
+    {{#if user.google}}
+    <div style="width:100%; padding:15px; color:#000;" class="google-container">
+      <span>Имя</span> - {{user.google.name}}
+      <span>почта</span> - {{user.google.email}}
+    </div>
+    {{/if}}
   </div>
 </div>
 {{> footer}}

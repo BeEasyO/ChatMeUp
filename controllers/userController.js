@@ -31,7 +31,6 @@ exports.validateRegister = (req, res, next) =>{
 
 	const errors = req.validationErrors();
 	if(errors){
-		console.log(errors);
 		req.flash('error', errors.map(err=>err.msg));
 		res.render('register', {
 		welcomeMessage: 'Register',
