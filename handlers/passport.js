@@ -38,7 +38,7 @@ passport.use(new FacebookStrategy({
                 else{
                     const newUser = new User();
                     //newUser.email = profile.emails[0].value;
-                    newUser.facebook.email    = profile.emails[0].value;
+                    //newUser.facebook.email    = profile.emails[0].value;
                     newUser.facebook.id    = profile.id; // set the users facebook id                   
                     newUser.facebook.token = accessToken; // we will save the token that facebook provides to the user                    
                     newUser.facebook.name  = profile.displayName; // look at the passport user profile to see how names are returned
