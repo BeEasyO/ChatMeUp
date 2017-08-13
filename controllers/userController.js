@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const request = require("request");
+const tumblr = require("../handlers/tumblr_posts");
 
-exports.loginForm = (req, res) => {
+exports.loginForm = async (req, res) => {
+	var some = await tumblr.GetRandomTumblrImage();
 	res.render('login', {
 		welcomeMessage: 'Login',
-		pageTitle: 'Login page'
+		pageTitle: 'Login page',
+		backimage: some
 	});
 };
 

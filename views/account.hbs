@@ -40,13 +40,13 @@
         </ul>
       </div>
     </form>  
-    {{#if user.facebook}}
+    {{#if user.facebook.id}}
     <div style="width:100%; padding:15px; color:#000;" class="facebook-container">
       <span>Имя</span> - {{user.facebook.name}}
       <span>почта</span> - {{user.facebook.email}}
     </div>
     {{/if}}
-    {{#if user.google}}
+    {{#if user.google.id}}
     <div style="width:100%; padding:15px; color:#000;" class="google-container">
       <span>Имя</span> - {{user.google.name}}
       <span>почта</span> - {{user.google.email}}
